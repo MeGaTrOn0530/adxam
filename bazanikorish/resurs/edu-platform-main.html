@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ta'lim Platformasi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        .header {
+            background-color: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .user-menu {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .user-menu button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-btn {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .register-btn {
+            background-color: #fff;
+            color: #2563eb;
+            border: 1px solid #2563eb !important;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .welcome-section h1 {
+            font-size: 2.5rem;
+            color: #1e40af;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-section p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .section-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background-color: #e5e7eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-card h3 {
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-card button {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .section-card button:hover {
+            background-color: #1e40af;
+        }
+
+        .footer {
+            background-color: #1e40af;
+            color: white;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #e5e7eb;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .welcome-section h1 {
+                font-size: 2rem;
+            }
+
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="nav-top">
+            <div class="logo">EDU Platform</div>
+            <div class="user-menu">
+                <button class="login-btn">Kirish</button>
+                <button class="register-btn">Ro'yxatdan o'tish</button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="welcome-section">
+            <h1>Ta'lim Platformasiga Xush Kelibsiz</h1>
+            <p>Zamonaviy bilimlarni o'rganish va kasbiy malakangizni oshirish uchun eng yaxshi platforma</p>
+        </section>
+
+        <div class="sections-grid">
+            <!-- Interactive Lessons -->
+            <div class="section-card" onclick="window.location.href='interactive-lessons.html'">
+                <div class="section-icon">📚</div>
+                <h3>Interaktiv darslar</h3>
+                <p>O'zaro aloqada o'rganish va amaliy tajriba orttirish</p>
+                <button>Boshlash</button>
+            </div>
+
+            <!-- Visual Materials -->
+            <div class="section-card" onclick="window.location.href='visual-materials.html'">
+                <div class="section-icon">🎨</div>
+                <h3>Ko'rgazmali materiallar</h3>
+                <p>Vizual materiallar orqali oson o'zlashtirish</p>
+                <button>Ko'rish</button>
+            </div>
+
+            <!-- Tests and Assignments -->
+            <div class="section-card" onclick="window.location.href='tests.html'">
+                <div class="section-icon">✍️</div>
+                <h3>Test va topshiriqlar</h3>
+                <p>Bilimlaringizni tekshiring va mustahkamlang</p>
+                <button>Testni boshlash</button>
+            </div>
+
+            <!-- Video Lessons -->
+            <div class="section-card" onclick="window.location.href='video-lessons.html'">
+                <div class="section-icon">🎥</div>
+                <h3>Video darslar</h3>
+                <p>Professional o'qituvchilardan video darslar</p>
+                <button>Darslarni ko'rish</button>
+            </div>
+
+            <!-- Practical Projects -->
+            <div class="section-card" onclick="window.location.href='projects.html'">
+                <div class="section-icon">💡</div>
+                <h3>Amaliy loyihalar</h3>
+                <p>Real loyihalar ustida ishlash tajribasi</p>
+                <button>Loyihalarni ko'rish</button>
+            </div>
+
+            <!-- Pedagogical Programs -->
+            <div class="section-card" onclick="window.location.href='pedagogical-programs.html'">
+                <div class="section-icon">📝</div>
+                <h3>Pedagogik dasturlar</h3>
+                <p>Zamonaviy pedagogik dasturlarni o'rganish</p>
+                <button>O'rganishni boshlash</button>
+            </div>
+
+            <!-- Q&A Forum -->
+            <div class="section-card" onclick="window.location.href='forum.html'">
+                <div class="section-icon">💭</div>
+                <h3>Savol-javob forumi</h3>
+                <p>Boshqalar bilan tajriba almashing</p>
+                <button>Forumga o'tish</button>
+            </div>
+
+            <!-- Certification -->
+            <div class="section-card" onclick="window.location.href='certification.html'">
+                <div class="section-icon">🏆</div>
+                <h3>Sertifikat olish</h3>
+                <p>O'z bilimingizni tasdiqlang</p>
+                <button>Sertifikat olish</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Platform haqida</h4>
+                <ul>
+                    <li><a href="#">Biz haqimizda</a></li>
+                    <li><a href="#">Hamkorlik</a></li>
+                    <li><a href="#">Bog'lanish</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Yordam</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Qo'llanma</a></li>
+                    <li><a href="#">Texnik yordam</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Ijtimoiy tarmoqlar</h4>
+                <ul>
+                    <li><a href="#">Telegram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

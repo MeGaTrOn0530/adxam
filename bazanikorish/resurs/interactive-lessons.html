@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interaktiv Darslar</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #2196F3;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .lesson-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .lesson-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .lesson-card h3 {
+            color: #2196F3;
+            margin-bottom: 10px;
+        }
+        .lesson-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .start-button {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .start-button:hover {
+            background: #1976D2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Interaktiv Darslar</h1>
+        <p>O'zaro aloqada o'rganish va amaliy tajriba orttirish</p>
+    </header>
+
+    <div class="container">
+        <div class="lesson-grid">
+            <div class="lesson-card">
+                <h3>Boshlang'ich daraja</h3>
+                <p>Asosiy tushunchalar va fundamental bilimlar</p>
+                <button class="start-button">Darsni boshlash</button>
+            </div>
+
+            <div class="lesson-card">
+                <h3>O'rta daraja</h3>
+                <p>Amaliy mashg'ulotlar va ko'nikmalarni rivojlantirish</p>
+                <button class="start-button">Darsni boshlash</button>
+            </div>
+
+            <div class="lesson-card">
+                <h3>Yuqori daraja</h3>
+                <p>Murakkab mavzular va maxsus kurslar</p>
+                <button class="start-button">Darsni boshlash</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

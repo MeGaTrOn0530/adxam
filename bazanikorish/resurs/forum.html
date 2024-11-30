@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Savol-javob Forumi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background-color: #795548;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        .forum-controls {
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .search-bar {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 300px;
+        }
+        .new-topic-button {
+            background: #795548;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .forum-topics {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .topic {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .topic:hover {
+            background-color: #f5f5f5;
+        }
+        .topic:last-child {
+            border-bottom: none;
+        }
+        .topic h3 {
+            color: #795548;
+            margin-bottom: 5px;
+        }
+        .topic-meta {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .topic-stats {
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 1000;
+        }
+        .modal-content {
+            background-color: white;
+            margin: 50px auto;
+            padding: 20px;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            position: relative;
+        }
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+        .modal-title {
+            margin-bottom: 20px;
+            color: #795548;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #666;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .form-group textarea {
+            min-height: 100px;
+        }
+        .submit-button {
+            background: #795548;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Topic view styles */
+        .topic-view {
+            display: none;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        .topic-content {
+            margin: 20px 0;
+        }
+        .replies {
+            margin-top: 20px;
+        }
+        .reply {
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 10px;
+        }
+        .reply-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .back-button {
+            background: #666;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Savol-javob Forumi</h1>
+        <p>Boshqalar bilan tajriba almashing</p>
+    </header>
+
+    <div class="container">
+        <div class="forum-controls">
+            <input type="text" class="search-bar" placeholder="Mavzularni qidirish..." onkeyup="searchTopics()">
+            <button class="new-topic-button" onclick="showNewTopicModal()">Yangi mavzu ochish</button>
+        </div>
+
+        <div class="forum-topics">
+            <div class="topic" onclick="showTopic(1)">
+                <h3>O'qitish metodikasi haqida savol</h3>
+                <div class="topic-meta">Muallif: User123 | Sana: 15.11.2024</div>
+                <p>Yangi metodikani qo'llash bo'yicha tajribalar...</p>
+                <div class="topic-stats">Javoblar: 5 | Ko'rishlar: 120</div>
+            </div>
+
+            <div class="topic" onclick="showTopic(2)">
+                <h3>Yangi o'quv dasturi muhokamasi</h3>
+                <div class="topic-meta">Muallif: Teacher567 | Sana: 14.11.2024</div>
+                <p>Yangi dastur haqida fikrlar va takliflar...</p>
+                <div class="topic-stats">Javoblar: 8 | Ko'rishlar: 245</div>
+            </div>
+
+            <div class="topic" onclick="showTopic(3)">
+                <h3>Online ta'lim platformalari</h3>
+                <div class="topic-meta">Muallif: Expert789 | Sana: 13.11.2024</div>
+                <p>Masofaviy ta'limning afzalliklari va kamchiliklari...</p>
+                <div class="topic-stats">Javoblar: 12 | Ko'rishlar: 310</div>
+            </div>
+        </div>
+
+        <!-- New Topic Modal -->
+        <div id="newTopicModal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal" onclick="closeNewTopicModal()">&times;</span>
+                <h2 class="modal-title">Yangi mavzu yaratish</h2>
+                <form onsubmit="submitNewTopic(event)">
+                    <div class="form-group">
+                        <label>Mavzu sarlavhasi:</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Matn:</label>
+                        <textarea required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Yuborish</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Topic View -->
+        <div id="topicView" class="topic-view">
+            <button class="back-button" onclick="hideTopicView()">Orqaga</button>
+            <h2 id="topicTitle"></h2>
+            <div class="topic-meta" id="topicMeta"></div>
+            <div class="topic-content" id="topicContent"></div>
+            
+            <div class="replies" id="topicReplies">
+                <!-- Replies will be added here -->
+            </div>
+            
+            <div class="reply-form">
+                <h3>Javob yozish</h3>
+                <textarea placeholder="Javobingizni yozing..."></textarea>
+                <button class="submit-button" onclick="submitReply()">Javob berish</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Show/hide new topic modal
+        function showNewTopicModal() {
+            document.getElementById('newTopicModal').style.display = 'block';
+        }
+
+        function closeNewTopicModal() {
+            document.getElementById('newTopicModal').style.display = 'none';
+        }
+
+        // Submit new topic
+        function submitNewTopic(event) {
+            event.preventDefault();
+            const form = event.target;
+            const title = form.querySelector('input').value;
+            const content = form.querySelector('textarea').value;
+            
+            // Add new topic to forum
+            const topicsContainer = document.querySelector('.forum-topics');
+            const newTopic = document.createElement('div');
+            newTopic.className = 'topic';
+            newTopic.innerHTML = `
+                <h3>${title}</h3>
+                <div class="topic-meta">Muallif: CurrentUser | Sana: ${new Date().toLocaleDateString()}</div>
+                <p>${content}</p>
+                <div class="topic-stats">Javoblar: 0 | Ko'rishlar: 0</div>
+            `;
+            topicsContainer.insertBefore(newTopic, topicsContainer.firstChild);
+            
+            closeNewTopicModal();
+            form.reset();
+        }
+
+        // Show topic view
+        function showTopic(id) {
+            const forumTopics = document.querySelector('.forum-topics');
+            const topicView = document.getElementById('topicView');
+            const topic = document.querySelectorAll('.topic')[id-1];
+            
+            // Update topic view content
+            document.getElementById('topicTitle').textContent = topic.querySelector('h3').textContent;
+            document.getElementById('topicMeta').textContent = topic.querySelector('.topic-meta').textContent;
+            document.getElementById('topicContent').textContent = topic.querySelector('p').textContent;
+            
+            // Show topic view and hide topics list
+            forumTopics.style.display = 'none';
+            topicView.style.display = 'block';
+            
+            // Update view count
+            const stats = topic.querySelector('.topic-stats');
+            const views = parseInt(stats.textContent.split('|')[1].split(':')[1]) + 1;
+            stats.textContent = stats.textContent.replace(/Ko'rishlar: \d+/, `Ko'rishlar: ${views}`);
+        }
+
+        // Hide topic view
+        function hideTopicView() {
+            document.querySelector('.forum-topics').style.display = 'block';
+            document.getElementById('topicView').style.display = 'none';
+        }
+
+        // Submit reply
+        function submitReply() {
+            const replyText = document.querySelector('.reply-form textarea').value;
+            if (replyText.trim()) {
+                const replies = document.getElementById('topicReplies');
+                const newReply = document.createElement('div');
+                newReply.className = 'reply';
+                newReply.innerHTML = `
+                    <div class="topic-meta">Muallif: CurrentUser | Sana: ${new Date().toLocaleDateString()}</div>
+                    <p>${replyText}</p>
+                `;
+                replies.appendChild(newReply);
+                document.querySelector('.reply-form textarea').value = '';
+                
+                // Update reply count
+                const topicId = Array.from(document.querySelectorAll('.topic')).findIndex(
+                    topic => topic.querySelector('h3').textContent === document.getElementById('topicTitle').textContent
+                );
+                const stats = document.querySelectorAll('.topic')[topicId].querySelector('.topic-stats');
+                const replies = parseInt(stats.textContent.split('|')[0].split(':')[1]) + 1;
+                stats.textContent = stats.textContent.replace(/Javoblar: \d+/, `Javoblar: ${replies}`);
+            }
+        }
+
+        // Search topics
+        function searchTopics() {
+            const searchTerm = document.querySelector('.search-bar').value.toLowerCase();
+            const topics = document.querySelectorAll('.topic');
+            
+            topics.forEach(topic => {
+                const title = topic.querySelector('h3').textContent.toLowerCase();
+                const content = topic.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                    topic.style.display = 'block';
+                } else {
+                    topic.style.display = 'none';
+                }
+            });
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('newTopicModal')) {
+                closeNewTopicModal();
+            }
+        }
+    </script>
+</body>
+</html>

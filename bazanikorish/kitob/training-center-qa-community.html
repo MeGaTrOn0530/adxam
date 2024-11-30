@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Center - Community Q&A</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .book-list {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .book-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .book-summary {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .book-title {
+            font-size: 1.2rem;
+            margin: 0;
+            color: #333;
+        }
+
+        .book-details {
+            display: none;
+            padding: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .book-details.active {
+            display: block;
+        }
+
+        .book-content {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .book-cover {
+            width: 200px;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .book-info {
+            flex: 1;
+        }
+
+        .qa-section {
+            margin-top: 1rem;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+
+        .qa-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .question {
+            font-weight: bold;
+            color: #2196F3;
+            margin-bottom: 0.5rem;
+        }
+
+        .answer {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .user-info {
+            font-size: 0.9rem;
+            color: #888;
+            margin-top: 0.5rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 1rem;
+        }
+
+        .detail-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .detail-btn:hover {
+            background-color: #45a049;
+        }
+
+        .submit-btn {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .submit-btn:hover {
+            background-color: #1976D2;
+        }
+
+        .answer-btn {
+            background-color: #FFA726;
+            color: white;
+            margin-left: 1rem;
+        }
+
+        .answer-btn:hover {
+            background-color: #FB8C00;
+        }
+
+        .question-form, .answer-form {
+            margin-top: 1rem;
+            padding: 1rem;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .vote-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .vote-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.2rem 0.5rem;
+            color: #666;
+        }
+
+        .vote-count {
+            margin: 0 0.5rem;
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+        }
+
+        .download-btn:hover {
+            background-color: #1976D2;
+        }
+
+        @media (max-width: 768px) {
+            .book-content {
+                flex-direction: column;
+            }
+
+            .book-cover {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Community Q&A Section</h1>
+        <p>Ask questions, share answers, and learn together</p>
+    </div>
+
+    <div class="book-list">
+        <!-- Book 1 -->
+        <div class="book-item">
+            <div class="book-summary">
+                <h2 class="book-title">Introduction to Programming</h2>
+                <button class="btn detail-btn" onclick="toggleDetails(this)">Show Details</button>
+            </div>
+            <div class="book-details">
+                <div class="book-content">
+                    <img src="/api/placeholder/200/280" alt="Programming Book" class="book-cover">
+                    <div class="book-info">
+                        <h3>Introduction to Programming</h3>
+                        <p>Author: John Smith</p>
+                        <p>A comprehensive guide to beginning programming concepts.</p>
+                        <a href="YOUR_GOOGLE_DRIVE_LINK" class="download-btn" target="_blank">Download PDF</a>
+                    </div>
+                </div>
+                <div class="qa-section">
+                    <h3>Community Questions & Answers</h3>
+                    
+                    <!-- Ask Question Form -->
+                    <button class="btn submit-btn" onclick="toggleQuestionForm(this)">Ask a Question</button>
+                    <div class="question-form" style="display: none;">
+                        <h4>Ask Your Question</h4>
+                        <input type="text" placeholder="Your Name" id="questionName">
+                        <textarea placeholder="Type your question here..." id="questionText"></textarea>
+                        <button class="btn submit-btn" onclick="submitQuestion(this)">Submit Question</button>
+                    </div>
+
+                    <!-- Existing Q&A -->
+                    <div class="qa-item">
+                        <div class="question">Q: What programming languages are covered?</div>
+                        <div class="user-info">Asked by: Alex Smith - 2 hours ago</div>
+                        <div class="vote-buttons">
+                            <button class="vote-btn" onclick="vote(this, 1)">↑</button>
+                            <span class="vote-count">5</span>
+                            <button class="vote-btn" onclick="vote(this, -1)">↓</button>
+                        </div>
+                        
+                        <div class="answers">
+                            <div class="answer">
+                                <p>The book covers Python, JavaScript, and Java with practical examples.</p>
+                                <div class="user-info">Answered by: Maria Garcia - 1 hour ago</div>
+                                <div class="vote-buttons">
+                                    <button class="vote-btn" onclick="vote(this, 1)">↑</button>
+                                    <span class="vote-count">3</span>
+                                    <button class="vote-btn" onclick="vote(this, -1)">↓</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn answer-btn" onclick="toggleAnswerForm(this)">Add Answer</button>
+                        <div class="answer-form" style="display: none;">
+                            <input type="text" placeholder="Your Name" id="answerName">
+                            <textarea placeholder="Type your answer here..." id="answerText"></textarea>
+                            <button class="btn submit-btn" onclick="submitAnswer(this)">Submit Answer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDetails(button) {
+            const details = button.parentElement.nextElementSibling;
+            const isActive = details.classList.contains('active');
+            button.textContent = isActive ? 'Show Details' : 'Hide Details';
+            details.classList.toggle('active');
+        }
+
+        function toggleQuestionForm(button) {
+            const form = button.nextElementSibling;
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function toggleAnswerForm(button) {
+            const form = button.nextElementSibling;
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function submitQuestion(button) {
+            const form = button.parentElement;
+            const name = form.querySelector('#questionName').value;
+            const question = form.querySelector('#questionText').value;
+            
+            if (!name || !question) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Create new question element
+            const qaSection = form.parentElement;
+            const newQuestion = document.createElement('div');
+            newQuestion.className = 'qa-item';
+            newQuestion.innerHTML = `
+                <div class="question">Q: ${question}</div>
+                <div class="user-info">Asked by: ${name} - Just now</div>
+                <div class="vote-buttons">
+                    <button class="vote-btn" onclick="vote(this, 1)">↑</button>
+                    <span class="vote-count">0</span>
+                    <button class="vote-btn" onclick="vote(this, -1)">↓</button>
+                </div>
+                <div class="answers"></div>
+                <button class="btn answer-btn" onclick="toggleAnswerForm(this)">Add Answer</button>
+                <div class="answer-form" style="display: none;">
+                    <input type="text" placeholder="Your Name" id="answerName">
+                    <textarea placeholder="Type your answer here..." id="answerText"></textarea>
+                    <button class="btn submit-btn" onclick="submitAnswer(this)">Submit Answer</button>
+                </div>
+            `;
+
+            qaSection.appendChild(newQuestion);
+            
+            // Clear form
+            form.querySelector('#questionName').value = '';
+            form.querySelector('#questionText').value = '';
+            form.style.display = 'none';
+        }
+
+        function submitAnswer(button) {
+            const form = button.parentElement;
+            const name = form.querySelector('#answerName').value;
+            const answer = form.querySelector('#answerText').value;
+            
+            if (!name || !answer) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Create new answer element
+            const answersSection = form.parentElement.querySelector('.answers');
+            const newAnswer = document.createElement('div');
+            newAnswer.className = 'answer';
+            newAnswer.innerHTML = `
+                <p>${answer}</p>
+                <div class="user-info">Answered by: ${name} - Just now</div>
+                <div class="vote-buttons">
+                    <button class="vote-btn" onclick="vote(this, 1)">↑</button>
+                    <span class="vote-count">0</span>
+                    <button class="vote-btn" onclick="vote(this, -1)">↓</button>
+                </div>
+            `;
+
+            answersSection.appendChild(newAnswer);
+            
+            // Clear form
+            form.querySelector('#answerName').value = '';
+            form.querySelector('#answerText').value = '';
+            form.style.display = 'none';
+        }
+
+        function vote(button, value) {
+            const voteCount = button.parentElement.querySelector('.vote-count');
+            let currentVotes = parseInt(voteCount.textContent);
+            voteCount.textContent = currentVotes + value;
+        }
+    </script>
+</body>
+</html>

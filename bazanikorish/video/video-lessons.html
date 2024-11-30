@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Training Center - Video Lessons</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+
+        .header {
+            text-align: center;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .courses-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .course-thumbnail {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .course-info {
+            padding: 1rem;
+        }
+
+        .course-title {
+            font-size: 1.2rem;
+            margin: 0 0 0.5rem 0;
+            color: #333;
+        }
+
+        .course-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .course-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .view-course-btn {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .view-course-btn:hover {
+            background-color: #45a049;
+        }
+
+        .video-player-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 1000px;
+            margin: 2% auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .lesson-list {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .lesson-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .lesson-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        .lesson-title {
+            flex: 1;
+        }
+
+        .lesson-duration {
+            color: #888;
+            margin-left: 1rem;
+        }
+
+        .progress-bar {
+            height: 4px;
+            background-color: #eee;
+            border-radius: 2px;
+            margin-top: 0.5rem;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 2px;
+            width: 0%;
+        }
+
+        @media (max-width: 768px) {
+            .courses-container {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Video Lessons</h1>
+        <p>Browse our collection of educational video courses</p>
+    </div>
+
+    <div class="courses-container">
+        <!-- Course 1 -->
+        <div class="course-card">
+            <img src="/api/placeholder/300/180" alt="Course 1" class="course-thumbnail">
+            <div class="course-info">
+                <h3 class="course-title">Web Development Fundamentals</h3>
+                <p class="course-description">Learn the basics of HTML, CSS, and JavaScript through practical examples.</p>
+                <div class="course-meta">
+                    <span>12 lessons</span>
+                    <span>6 hours</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 60%;"></div>
+                </div>
+                <button class="view-course-btn" onclick="openCourse(1)">Continue Learning</button>
+            </div>
+        </div>
+
+        <!-- Course 2 -->
+        <div class="course-card">
+            <img src="/api/placeholder/300/180" alt="Course 2" class="course-thumbnail">
+            <div class="course-info">
+                <h3 class="course-title">Database Design</h3>
+                <p class="course-description">Master the principles of database design and SQL fundamentals.</p>
+                <div class="course-meta">
+                    <span>8 lessons</span>
+                    <span>4 hours</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 30%;"></div>
+                </div>
+                <button class="view-course-btn" onclick="openCourse(2)">Continue Learning</button>
+            </div>
+        </div>
+
+        <!-- Course 3 -->
+        <div class="course-card">
+            <img src="/api/placeholder/300/180" alt="Course 3" class="course-thumbnail">
+            <div class="course-info">
+                <h3 class="course-title">Mobile App Development</h3>
+                <p class="course-description">Build your first mobile application using React Native.</p>
+                <div class="course-meta">
+                    <span>15 lessons</span>
+                    <span>8 hours</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress" style="width: 0%;"></div>
+                </div>
+                <button class="view-course-btn" onclick="openCourse(3)">Start Learning</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Video Player Modal -->
+    <div id="videoModal" class="video-player-modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 id="currentCourseTitle">Course Title</h2>
+            <div class="video-container">
+                <iframe id="videoPlayer" src="about:blank" allowfullscreen></iframe>
+            </div>
+            <div class="lesson-list">
+                <div class="lesson-item" onclick="playVideo('1.mp4')">
+                    <div class="lesson-title">1. Introduction to the Course</div>
+                    <div class="lesson-duration">15:30</div>
+                </div>
+                <div class="lesson-item" onclick="playVideo('YOUR_VIDEO_URL_2')">
+                    <div class="lesson-title">2. Setting Up Your Development Environment</div>
+                    <div class="lesson-duration">23:45</div>
+                </div>
+                <div class="lesson-item" onclick="playVideo('YOUR_VIDEO_URL_3')">
+                    <div class="lesson-title">3. Basic Concepts and Syntax</div>
+                    <div class="lesson-duration">19:20</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openCourse(courseId) {
+            const modal = document.getElementById('videoModal');
+            const titleElement = document.getElementById('currentCourseTitle');
+            
+            // Set course title based on courseId
+            switch(courseId) {
+                case 1:
+                    titleElement.textContent = 'Web Development Fundamentals';
+                    break;
+                case 2:
+                    titleElement.textContent = 'Database Design';
+                    break;
+                case 3:
+                    titleElement.textContent = 'Mobile App Development';
+                    break;
+            }
+            
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('videoModal');
+            const videoPlayer = document.getElementById('videoPlayer');
+            modal.style.display = 'none';
+            videoPlayer.src = 'about:blank'; // Stop video playback
+        }
+
+        function playVideo(videoUrl) {
+            const videoPlayer = document.getElementById('videoPlayer');
+            videoPlayer.src = videoUrl;
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('videoModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram orqali habar yuborish</title>
+</head>
+<body>
+
+    <!-- Aloqa formi -->
+    <form id="contactForm" class="contact-form">
+        <label for="fname">Ismingiz</label>
+        <input type="text" id="fname" required>
+        
+        <label for="lname">Familyangiz</label>
+        <input type="text" id="lname" required>
+
+        <label for="email">Elektron pochtangiz</label>
+        <input type="email" id="email" required>
+
+        <label for="subject">Mavzu</label>
+        <input type="text" id="subject" required>
+
+        <label for="message">Maqsad</label>
+        <textarea id="message" rows="4" required></textarea>
+
+        <button type="submit">Yuborish</button>
+    </form>
+
+    <script>
+        // Telegram bot tokeni va chat ID
+        const botToken = '7898486741:AAEUi8HXTONC72NQUSU20hJn-BE4j3MNYWc';
+        const chatID = '1077804816';
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Formni qayta yuklanishini oldini oladi
+
+            // Formdan malumotlarni olish
+            const fname = document.getElementById('fname').value;
+            const lname = document.getElementById('lname').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Telegramga yuboriladigan habar
+            const text = `👤 Ism: ${fname} ${lname}\n📧 Email: ${email}\n📝 Mavzu: ${subject}\n✉️ Xabar: ${message}`;
+
+            // Telegram API'ga so'rov yuborish
+            fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    chat_id: chatID,
+                    text: text // Formdan olingan habarni yuborish
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data); // Xato haqida qo'shimcha ma'lumot olish uchun
+                if (data.ok) {
+                    alert('Habar yuborildi!');
+                } else {
+                    alert(`Xatolik yuz berdi! Xato kodi: ${data.error_code}`);
+                }
+            })
+            .catch(error => {
+                console.error('Xatolik:', error);
+                alert('Xatolik yuz berdi!');
+            });
+        });
+    </script>
+
+</body>
+</html>

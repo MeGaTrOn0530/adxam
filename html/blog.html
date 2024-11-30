@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="copyright" content="MACode ID, https://macodeid.com/">
+
+  <title>eBOOK</title>
+
+  <link rel="stylesheet" href="../assets/css/maicons.css">
+
+  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+
+  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
+
+  <link rel="stylesheet" href="../assets/css/theme.css">
+  <style>
+     * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: #333;
+        }
+
+        .header {
+            background-color: #fff;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    .nav-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .user-menu {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .user-menu button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-btn {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .register-btn {
+            background-color: #fff;
+            color: #2563eb;
+            border: 1px solid #2563eb !important;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .welcome-section h1 {
+            font-size: 2.5rem;
+            color: #1e40af;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-section p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .section-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background-color: #e5e7eb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+
+        .section-card h3 {
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-card p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-card button {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .section-card button:hover {
+            background-color: #1e40af;
+        }
+
+        .footer {
+            background-color: #1e40af;
+            color: white;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: #e5e7eb;
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .welcome-section h1 {
+                font-size: 2rem;
+            }
+
+            .sections-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+  </style>
+</head>
+<body>
+
+  <!-- Back to top button -->
+  <div class="back-to-top"></div>
+  
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky" data-offset="300">
+      <div class="container">
+        <a href="#" class="navbar-brand"><img src="../assets/img/1.jpg" style="width: 100px;" alt=""></span></a>
+
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapsed" id="navbarContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Asosiy sahifa</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="blog.html">Resurslar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Aloqa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="service.html">Profil</a>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+  </header>
+
+  <div class="page-section">
+    <div class="container">
+     
+
+      <div class="sections-grid">
+        <!-- Interactive Lessons -->
+        <div class="section-card" onclick="window.location.href='../bazanikorish/resurs/interactive-lessons.html'">
+            <div class="section-icon">📚</div>
+            <h3>Interaktiv darslar</h3>
+            <p>O'zaro aloqada o'rganish va amaliy tajriba orttirish</p>
+            <button>Boshlash</button>
+        </div>
+
+        <!-- Visual Materials -->
+        <div class="section-card" onclick="window.location.href='../bazanikorish/resurs/visual-materials.html'">
+            <div class="section-icon">🎨</div>
+            <h3>Ko'rgazmali materiallar</h3>
+            <p>Vizual materiallar orqali oson o'zlashtirish</p>
+            <button>Ko'rish</button>
+        </div>
+
+        <!-- Tests and Assignments -->
+        <div class="section-card" onclick="window.location.href='../bazanikorish/resurs/test/test.html'">
+            <div class="section-icon">✍️</div>
+            <h3>Test va topshiriqlar</h3>
+            <p>Bilimlaringizni tekshiring va mustahkamlang</p>
+            <button>Testni boshlash</button>
+        </div>
+
+        <!-- Video Lessons -->
+        <div class="section-card" onclick="window.location.href='../bazanikorish/resurs/video-lessons.html'">
+            <div class="section-icon">🎥</div>
+            <h3>Video darslar</h3>
+            <p>Professional o'qituvchilardan video darslar</p>
+            <button>Darslarni ko'rish</button>
+        </div>
+
+        <!-- Practical Projects -->
+        <div class="section-card" onclick="window.location.href='../bazanikorish/resurs/projects.html'">
+            <div class="section-icon">💡</div>
+            <h3>Amaliy loyihalar</h3>
+            <p>Real loyihalar ustida ishlash tajribasi</p>
+            <button>Loyihalarni ko'rish</button>
+        </div>
+
+        <!-- Pedagogical Programs -->
+        <div class="section-card" onclick="window.location.href='../bazanikorish/resurs/pedagogical-programs.html'">
+            <div class="section-icon">📝</div>
+            <h3>Pedagogik dasturlar</h3>
+            <p>Zamonaviy pedagogik dasturlarni o'rganish</p>
+            <button>O'rganishni boshlash</button>
+        </div>
+
+        <!-- Q&A Forum -->
+        <div class="section-card" onclick="window.location.href='../bazanikorish/resurs/forum.html'">
+            <div class="section-icon">💭</div>
+            <h3>Savol-javob forumi</h3>
+            <p>Boshqalar bilan tajriba almashing</p>
+            <button>Forumga o'tish</button>
+        </div>
+
+        <!-- Certification -->
+        <div class="section-card" onclick="window.location.href='../bazanikorish/resurs/certification.html'">
+            <div class="section-icon">🏆</div>
+            <h3>Sertifikat olish</h3>
+            <p>O'z bilimingizni tasdiqlang</p>
+            <button>Sertifikat olish</button>
+        </div>
+
+        <!-- Qo'llanma -->
+        <div class="section-card" onclick="window.location.href='../bazanikorish/resurs/about.html'">
+          <div class="section-icon">🏆</div>
+          <h3>Qo'llanma</h3>
+          <p>O'qib o'rganing</p>
+          <button>Qo'llanma</button>
+      </div>
+    </div>
+
+      
+
+    </div>
+  </div>
+
+  <footer class="page-footer bg-image" style="background-image: url(../assets/img/world_pattern.svg);">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-3 py-3">
+          <h3>Ijtimoiy tarmoqlar</h3>
+          <p>Toshkent Axborot Texnalogiyalari Universteti Samarqand filiali</p>
+
+          <div class="social-media-button">
+            <a href="#"><span class="mai-logo-facebook-f"></span></a>
+            <a href="#"><span class="mai-logo-instagram"></span></a>
+            <a href="#"><span class="mai-logo-telegram"></span></a>
+            <a href="#"><span class="mai-logo-youtube"></span></a>
+            <i class=""></i>
+          </div>
+        </div>
+        <div class="col-lg-3 py-3">
+          <h5>Harita</h5>
+          <ul class="footer-menu">
+            <li><a href="index.html">Asosiy sahifa</a></li>
+            <li><a href="blog.html">Resurslar</a></li>
+            <li><a href="contact.html">Aloqa</a></li>
+            <li><a href="service.html">Profil</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 py-3">
+          <h5>Qayta aloqa</h5>
+          <p>Samarqand shahar Ibn Sino ko'chasi 2 A uy</p>
+          <a href="tel:+998662295482" class="footer-link">+998 66 232 29 29</a>
+          <a href="tel:+998662295482" class="footer-link">+998 66 232 20 37</a>
+        </div>
+        <div class="col-lg-3 py-3">
+          <h5>Habar</h5>
+          <p>Muammolar bo'yicha yozing.</p>
+          <form action="#">
+            <input type="text" class="form-control" placeholder="Xabaroingiz qoldiring">
+            <button type="submit" class="btn btn-success btn-block mt-2">Yuborish</button>
+          </form>
+        </div>
+      </div>
+
+      <p class="text-center" id="copyright"> &copy; 2024. Abdumannonov Adxamjon tamonidan ishlab chiqilgan  <a href="#" target="_blank">bog'lanish</a></p>
+    </div>
+  </footer>
+
+<script src="../assets/js/jquery-3.5.1.min.js"></script>
+
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+<script src="../assets/js/google-maps.js"></script>
+
+<script src="../assets/vendor/wow/wow.min.js"></script>
+
+<script src="../assets/js/theme.js"></script>
+
+</body>
+</html>

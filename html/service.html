@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>eBOOK</title>
+  
+  <link rel="stylesheet" href="../assets/css/maicons.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap.css">
+  <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
+  <link rel="stylesheet" href="../assets/css/theme.css">
+</head>
+<body>
+
+  <!-- Back to top button -->
+  <div class="back-to-top"></div>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky" data-offset="300">
+      <div class="container">
+        <a href="#" class="navbar-brand"><img src="../assets/img/1.jpg" style="width: 100px;" alt=""></a>
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapsed" id="navbarContent">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Asosiy sahifa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="blog.html">Resurslar</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Aloqa</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="service.html">Profil</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Profil ma'lumotlarini joylashtirish -->
+    <div class="container page-banner1">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-md-6">
+          <h1 class="text-center">Mening Profilim</h1>
+
+          <!-- Profil formasi -->
+          <div class="profile1-container">
+            <form class="profile1-form">
+              <div class="form-group">
+                <label for="name">Ismi</label>
+                <input type="text" class="form-control" id="name" name="name" disabled>
+              </div>
+              <div class="form-group">
+                <label for="surname">Familiya</label>
+                <input type="text" class="form-control" id="surname" name="surname" disabled>
+              </div>
+              <div class="form-group">
+                <label for="login">ID</label>
+                <input type="text" class="form-control" id="id" name="id" disabled>
+              </div>
+              <div class="form-group">
+                <label for="group">Guruhingiz raqami</label>
+                <input type="text" class="form-control" id="group" name="group" disabled>
+              </div>
+              <div class="form-group">
+                <label for="passport">Pasport raqami</label>
+                <input type="text" class="form-control" id="passport" name="passport" disabled>
+              </div>
+              <div class="form-group">
+                <label for="phone">Talaba telefoni</label>
+                <input type="text" class="form-control" id="phone" name="phone" disabled>
+              </div>              
+            </form>
+          </div>
+          <a href="index.html">Chiqish</a>
+        </div>
+      </div>
+    </div>
+
+  </header>
+
+  <footer class="page-footer bg-image" style="background-image: url(../assets/img/world_pattern.svg);">
+    <div class="container">
+      <div class="row mb-5">
+        <div class="col-lg-3 py-3">
+          <h3>Ijtimoiy tarmoqlar</h3>
+          <p>Toshkent Axborot Texnalogiyalari Universteti Samarqand filiali</p>
+          <div class="social-media-button">
+            <a href="#"><span class="mai-logo-facebook-f"></span></a>
+            <a href="#"><span class="mai-logo-instagram"></span></a>
+            <a href="#"><span class="mai-logo-telegram"></span></a>
+            <a href="#"><span class="mai-logo-youtube"></span></a>
+          </div>
+        </div>
+        <div class="col-lg-3 py-3">
+          <h5>Harita</h5>
+          <ul class="footer-menu">
+            <li><a href="index.html">Asosiy sahifa</a></li>
+            <li><a href="blog.html">Resurslar</a></li>
+            <li><a href="contact.html">Aloqa</a></li>
+            <li><a href="service.html">Profil</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-3 py-3">
+          <h5>Qayta aloqa</h5>
+          <p>Samarqand shahar Ibn Sino ko'chasi 2 A uy</p>
+          <a href="tel:+998662295482" class="footer-link">+998 66 232 29 29</a>
+          <a href="tel:+998662295482" class="footer-link">+998 66 232 20 37</a>
+        </div>
+        <div class="col-lg-3 py-3">
+          <h5>Habar</h5>
+          <p>Muammolar bo'yicha yozing.</p>
+          <form action="#">
+            <input type="text" class="form-control" placeholder="Xabaroingiz qoldiring">
+            <button type="submit" class="btn btn-success btn-block mt-2">Yuborish</button>
+          </form>
+        </div>
+      </div>
+      <p class="text-center" id="copyright"> &copy; 2024. Abdumannonov Adxamjon tamonidan ishlab chiqilgan <a href="#" target="_blank">bog'lanish</a></p>
+    </div>
+  </footer>
+
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+      var userInfo = JSON.parse(localStorage.getItem('userInfo'));
+      if (userInfo) {
+        document.getElementById('name').value = userInfo.name;
+        document.getElementById('surname').value = userInfo.surname;
+        document.getElementById('id').value = userInfo.id;
+        document.getElementById('group').value = userInfo.group;
+        document.getElementById('passport').value = userInfo.passport;
+        document.getElementById('phone').value = userInfo.phone;
+        document.getElementById('profile-img-preview').src = userInfo.image;
+      } else {
+        window.location.href = 'index.html';  // Foydalanuvchi ma'lumoti bo'lmasa, login sahifasiga qaytarish
+      }
+    });
+  </script>
+
+</body>
+</html>
